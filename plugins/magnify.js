@@ -13,11 +13,13 @@
 				if(!active_node){
 					main.style.display = "none";
 					active_node = target.cloneNode(true);
+					active_node.id = "magnify";
 					console.log(active_node);
 					active_node.addEventListener("click",function(event){
 						main.style.display = "grid";
 						body.removeChild(active_node);
 						active_node = false;
+						target.scrollIntoView();
 					},false);
 					body.appendChild(active_node);
 				}					

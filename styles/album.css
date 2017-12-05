@@ -1,0 +1,52 @@
+#send_photo{
+	grid-area: header;
+	display: grid;
+}
+#send_photo input{
+	border: none;
+	background-color: #606060;
+	color: #a2dc02;
+}
+#send_photo input::placeholder{
+	color: #cccccc;
+}
+.desc{
+	visibility: hidden;
+}
+.album {
+	width: 100%;
+}
+body{
+	background: #606060;
+	color: #a2dc02;
+}
+main{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"header header header header"
+		"footer footer footer footer";
+}
+.photo_sector{
+	background: #606060;
+	width: 100%;
+	float: right;
+}
+.photo_sector:hover{
+	color: #bbbbbb;
+	background-color: #cccccc;
+}
+/*
+article:hover .album{
+		opacity: 0.5;
+}*/
+.photo_sector:hover .desc{
+	color: #6c6c6c;
+	visibility: initial;
+	top: -25%;
+}
+.photo_sector:active{
+	opacity: 1;
+	width: 100%;
+}

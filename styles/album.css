@@ -20,6 +20,18 @@ body{
 	background: #606060;
 	color: #a2dc02;
 }
+#magnify{
+	color: #6c6c6c;
+	background-color: #cccccc;
+	text-align: center;
+}
+#magnify img{
+	max-height: 85vh;
+	width: auto;
+}
+#magnify .desc{
+	visibility: initial;
+}
 main{
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
@@ -44,7 +56,6 @@ article:hover .album{
 .photo_sector:hover .desc{
 	color: #6c6c6c;
 	visibility: initial;
-	top: -25%;
 }
 .photo_sector:active{
 	opacity: 1;

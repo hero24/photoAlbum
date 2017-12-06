@@ -3,7 +3,10 @@
 <head>
         <title>Photo album</title>
 	<link rel="stylesheet" type="text/css" href="./styles/album.css">
+        <!-- "Photography can only represent the present." -->
 <?php
+        // Once photographed, the subject becomes part of the past.
+        // ~ Berenice Abbott
 	$plugins_dir = "./plugins/";
 	$plugins = dir($plugins_dir);
 	for($plugin=$plugins->read();$plugin;$plugin=$plugins->read()){

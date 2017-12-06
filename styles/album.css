@@ -1,3 +1,8 @@
+/*
+    "You can close your eyes to reality but not to memories."
+    ~ Stanislaw Jerzy Lec
+*/
+
 #send_photo{
 	grid-area: header;
 	display: grid;
@@ -49,10 +54,6 @@ main{
 	color: #bbbbbb;
 	background-color: #cccccc;
 }
-/*
-article:hover .album{
-		opacity: 0.5;
-}*/
 .photo_sector:hover .desc{
 	color: #6c6c6c;
 	visibility: initial;

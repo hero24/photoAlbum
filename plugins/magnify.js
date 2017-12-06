@@ -1,4 +1,10 @@
-;(function(){ 
+;(function(){
+        /* 
+            "What i like about photographs 
+            is that they capture a moment that’s gone forever, 
+            impossible to reproduce." 
+            ~ Karl Lagerfeld
+        */
 	document.addEventListener("DOMContentLoaded",function(){
 		var photos = document.getElementsByClassName("photo_sector");
 		var main = document.getElementById("main");

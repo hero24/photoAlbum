@@ -32,7 +32,9 @@ body{
 }
 #magnify img{
 	max-height: 85vh;
+        max-width: 90vw;
 	width: auto;
+        height: auto;
 }
 #magnify .desc{
 	visibility: initial;

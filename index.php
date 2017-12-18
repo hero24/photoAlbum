@@ -1,5 +1,5 @@
 <?php
-	require_once("./metadata.php");
+	@require_once("./metadata.php");
 	$images = "./images/";
 	define('META','./metadata/');
 	define("PIC","pic");

@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Photo album</title>
-	<link rel="stylesheet" type="text/css" href="./styles/album.css">
-        <!-- "Photography can only represent the present." -->
+		<!-- "Photography can only represent the present." -->
 <?php
         // Once photographed, the subject becomes part of the past.
         // ~ Berenice Abbott
+	require_once("./metadata.php");
+	$images = "./images/";
+	define('META','./metadata/');
+	define("PIC","pic");
+	if(@$page_info = file_get_contents(META.'page_info')){
+		$page_info = unserialize($page_info);
+	} else if(isset($_POST['title']) && isset($_POST['copyright'])){
+		$page_info = new PageMetadata($_POST['title'],$_POST['copyright']);
+		$saveinfo = serialize($page_info);
+		file_put_contents(META.'page_info',$saveinfo);
+	} else{
+		echo<<<END
+		<title>Setup album</title>
+		<link rel="stylesheet" type="text/css" href="./styles/album.css">
+		</head>
+		<body>
+		<main>
+			<h1 id="setup_header">Setup your album</h1>
+			<form method="post" id="setup">
+				<input type="text" name="title" id="title" placeholder="Title" required />
+				<input type="text" name="copyright" id="copyright" placeholder="copyright" required /> 
+				<input type="submit">
+			</form>
+		</main>
+		</body>
+		</html>
+END;
+	die();
+	}
+    echo('<title>'.$page_info->title.'</title>');
+?>
+	<link rel="stylesheet" type="text/css" href="./styles/album.css">
+        
+<?php
 	$plugins_dir = "./plugins/";
 	$plugins = dir($plugins_dir);
 	for($plugin=$plugins->read();$plugin;$plugin=$plugins->read()){
@@ -26,19 +58,6 @@
   <input type="submit">
 </form>
 <?php
-class ImageMetadata{
-	function __construct($title,$filename,$description,$orginal_name,$author,$type){
-		$this->title = $title;
-		$this->filename = $filename;
-		$this->orginal_name = $orginal_name;
-		$this->description = $description;
-                $this->author = $author;
-		$this->type = $type;
-	}
-}
-$images = "./images/";
-define('META','./metadata/');
-define("PIC","pic");
 $images_dir = dir($images);
 
 $dir_count = function($dir){

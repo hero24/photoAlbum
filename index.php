@@ -1,6 +1,5 @@
 <?php
 	require_once("./metadata.php");
-	$images = "./images/";
 	define('META','./metadata/');
 	define("PIC","pic");
     if(isset($_GET['photo_id'])){
@@ -75,7 +74,6 @@ $extension = function($files){
 	return explode('/',$files['type'])[1];
 };
 if(isset($_FILES[PIC]) && isset($_POST['author']) && isset($_POST['title']) && isset($_POST['description'])){
-	// if media type
 	$count = $dir_count(META);
     $file = file_get_contents($_FILES[PIC]['tmp_name']);
 	$metadata = new ImageMetadata($_POST['title'],

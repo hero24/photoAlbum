@@ -17,7 +17,6 @@
 <?php
         // Once photographed, the subject becomes part of the past.
         // ~ Berenice Abbott
-    echo(META);
 	if(@$page_info = file_get_contents(META.'page_info')){
 		$page_info = unserialize($page_info);
 	} else if(isset($_POST['title']) && isset($_POST['copyright'])){
@@ -80,7 +79,7 @@ if(isset($_FILES[PIC]) && isset($_POST['author']) && isset($_POST['title']) && i
 	$count = $dir_count(META)-1;
     $file = file_get_contents($_FILES[PIC]['tmp_name']);
 	$metadata = new ImageMetadata($_POST['title'],
-								  $name,
+								  $count.$extention($_FILES[PIC]),
 								  $_POST['description'],
 								  $_FILES[PIC]['name'],
                                   $_POST['author'],

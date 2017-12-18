@@ -89,6 +89,7 @@ if(isset($_FILES[PIC]) && isset($_POST['author']) && isset($_POST['title']) && i
 	file_put_contents(META.$count,$metadata);
 	
 }
+$images_dir = dir(META);
 for($image=$images_dir->read();$image;$image=$images_dir->read()){
 	if($image != '.' && $image != '..' && $image != 'page_info'){
 		$id = explode('.',$image)[0];

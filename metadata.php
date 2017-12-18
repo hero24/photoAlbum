@@ -10,13 +10,14 @@ class PageMetadata{
 	}
 }
 class ImageMetadata{
-	function __construct($title,$filename,$description,$orginal_name,$author,$type){
+	function __construct($title,$filename,$description,$orginal_name,$author,$type,$image){
 		$this->title = htmlspecialchars($title);
 		$this->filename = htmlspecialchars($filename);
 		$this->orginal_name = htmlspecialchars($orginal_name);
 		$this->description = htmlspecialchars($description);
-                $this->author = htmlspecialchars($author);
-		$this->type = htmlspecialchars($type);
+        $this->author = htmlspecialchars($author);
+		$this->type = $type;
+        $this->image = $image;
 	}
 }
 ?>

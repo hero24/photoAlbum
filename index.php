@@ -1,3 +1,15 @@
+<?php
+	require_once("./metadata.php");
+	$images = "./images/";
+	define('META','./metadata/');
+	define("PIC","pic");
+    if(isset($_GET['photo_id'])){
+        $meta = unserialize(file_get_contents(META.$id));
+        header("Content-type: ".$meta->type);
+        echo($meta->image);
+        die();
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,10 +17,6 @@
 <?php
         // Once photographed, the subject becomes part of the past.
         // ~ Berenice Abbott
-	require_once("./metadata.php");
-	$images = "./images/";
-	define('META','./metadata/');
-	define("PIC","pic");
 	if(@$page_info = file_get_contents(META.'page_info')){
 		$page_info = unserialize($page_info);
 	} else if(isset($_POST['title']) && isset($_POST['copyright'])){
@@ -70,13 +78,15 @@ if(isset($_FILES[PIC]) && isset($_POST['author']) && isset($_POST['title']) && i
 	// if media type
 	$count = $dir_count($images);
 	$name = $images.$count.'.'.$extension($_FILES[PIC]);
+    $file = file_get_contents($_FILES[PIC]['tmp_name']);
 	move_uploaded_file($_FILES[PIC]['tmp_name'],$name);
 	$metadata = new ImageMetadata($_POST['title'],
 								  $name,
 								  $_POST['description'],
 								  $_FILES[PIC]['name'],
-                                                                  $_POST['author'],
-								  $_FILES[PIC]['type']);
+                                  $_POST['author'],
+								  $_FILES[PIC]['type'],
+                                  $file);
 	$metadata = serialize($metadata);
 	file_put_contents(META.$count,$metadata);
 	

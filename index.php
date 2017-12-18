@@ -1,5 +1,5 @@
 <?php
-	@require_once("./metadata.php");
+	require_once("./metadata.php");
 	$images = "./images/";
 	define('META','./metadata/');
 	define("PIC","pic");
@@ -17,6 +17,7 @@
 <?php
         // Once photographed, the subject becomes part of the past.
         // ~ Berenice Abbott
+    echo(META);
 	if(@$page_info = file_get_contents(META.'page_info')){
 		$page_info = unserialize($page_info);
 	} else if(isset($_POST['title']) && isset($_POST['copyright'])){

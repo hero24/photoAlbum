@@ -79,7 +79,7 @@ if(isset($_FILES[PIC]) && isset($_POST['author']) && isset($_POST['title']) && i
 	$count = $dir_count(META)-1;
     $file = file_get_contents($_FILES[PIC]['tmp_name']);
 	$metadata = new ImageMetadata($_POST['title'],
-								  $count.$extention($_FILES[PIC]),
+								  $count.$extension($_FILES[PIC]),
 								  $_POST['description'],
 								  $_FILES[PIC]['name'],
                                   $_POST['author'],

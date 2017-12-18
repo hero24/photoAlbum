@@ -4,7 +4,7 @@
 	define('META','./metadata/');
 	define("PIC","pic");
     if(isset($_GET['photo_id'])){
-        $meta = unserialize(file_get_contents(META.$id));
+        $meta = unserialize(file_get_contents(META.$_GET['photo_id']));
         header("Content-type: ".$meta->type);
         echo($meta->image);
         die();

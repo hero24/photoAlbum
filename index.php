@@ -76,7 +76,7 @@ $extension = function($files){
 };
 if(isset($_FILES[PIC]) && isset($_POST['author']) && isset($_POST['title']) && isset($_POST['description'])){
 	// if media type
-	$count = $dir_count(META)-1;
+	$count = $dir_count(META);
     $file = file_get_contents($_FILES[PIC]['tmp_name']);
 	$metadata = new ImageMetadata($_POST['title'],
 								  $count.$extension($_FILES[PIC]),

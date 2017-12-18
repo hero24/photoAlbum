@@ -67,7 +67,7 @@ END;
   <input type="submit">
 </form>
 <?php
-$images_dir = dir($images);
+$images_dir = dir(META);
 
 $dir_count = function($dir){
 	return (count(scandir($dir)) - 2);
@@ -77,10 +77,8 @@ $extension = function($files){
 };
 if(isset($_FILES[PIC]) && isset($_POST['author']) && isset($_POST['title']) && isset($_POST['description'])){
 	// if media type
-	$count = $dir_count($images);
-	$name = $images.$count.'.'.$extension($_FILES[PIC]);
+	$count = $dir_count(META)-1;
     $file = file_get_contents($_FILES[PIC]['tmp_name']);
-	move_uploaded_file($_FILES[PIC]['tmp_name'],$name);
 	$metadata = new ImageMetadata($_POST['title'],
 								  $name,
 								  $_POST['description'],
@@ -93,13 +91,13 @@ if(isset($_FILES[PIC]) && isset($_POST['author']) && isset($_POST['title']) && i
 	
 }
 for($image=$images_dir->read();$image;$image=$images_dir->read()){
-	if($image != '.' && $image != '..'){
+	if($image != '.' && $image != '..' && $image != 'page_info'){
 		$id = explode('.',$image)[0];
 		$meta = unserialize(file_get_contents(META.$id));
 		echo<<<END
 		<article class="photo_sector" id="sector_$id">
 			<h1>$meta->title</h1>
-			<img class="album" id="$id" src="$images$image" alt="$meta->title" />
+			<img class="album" id="$id" src="./index.php?photo_id=$id" alt="$meta->title" />
 			<p class="desc">$meta->description</p>
                         <p class="author">Author: $meta->author</p>
 		</article>

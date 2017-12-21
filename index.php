@@ -20,6 +20,7 @@
 		$page_info = unserialize($page_info);
 	} else if(isset($_POST['title']) && isset($_POST['copyright'])){
         $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING && FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        echo($title);
         $copy = filter_input(INPUT_POST,'copyright',FILTER_SANITIZE_STRING && FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		$page_info = new PageMetadata($title,$copy);
 		$saveinfo = serialize($page_info);
@@ -108,4 +109,4 @@ $images_dir->close();
 ?>
 </main>
 </body>
-<html>
+</html>

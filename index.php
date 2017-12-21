@@ -19,7 +19,9 @@
 	if(@$page_info = file_get_contents(META.'page_info')){
 		$page_info = unserialize($page_info);
 	} else if(isset($_POST['title']) && isset($_POST['copyright'])){
-		$page_info = new PageMetadata($_POST['title'],$_POST['copyright']);
+        $title = filter_input(INPUT_POST,'title',FILTER_SANITIZE_STRING && FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $copy = filter_input(INPUT_POST,'copyright',FILTER_SANITIZE_STRING && FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$page_info = new PageMetadata($title,$copy);
 		$saveinfo = serialize($page_info);
 		file_put_contents(META.'page_info',$saveinfo);
 	} else{
